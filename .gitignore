@@ -1,0 +1,4 @@
+nbproject/*
+vendor/*
+app/config/parameters.yml
+

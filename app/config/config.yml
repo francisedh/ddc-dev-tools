@@ -1,0 +1,12 @@
+imports:
+    - { resource: parameters.yml }
+
+database:
+    db.options:
+        drivers: pdo_mysql
+        host: %db.host%
+        dbname: %db.dbname%
+        user: %db.user%
+        password: %db.password%
+        chartset: utf8
+        

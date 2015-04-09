@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use \Symfony\Component\Console\Application;
+
+$console = new Application;
+
+$cmds[] = new Console\Command\CleanDatabase();
+$cmds[] = new Console\Command\InitNextRecurringDate();
+
+$console->addCommands($cmds);
+$console->run();
+
