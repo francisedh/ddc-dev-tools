@@ -23,7 +23,7 @@ class ConfigContainer {
     }
 
     public static function getInstance() {
-        return (self::$instance instanceof self)? : self::$instance = new self;
+        return (self::$instance instanceof self) ? self::$instance : self::$instance = new self;
     }
 
     public function retrieve() {
