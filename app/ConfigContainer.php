@@ -27,14 +27,14 @@ class ConfigContainer {
     }
 
     public function retrieve() {
-        $loader = new YamlConfigLoader(new FileLocator());
-        $data = $loader->load(__DIR__ . '/config/config.yml');
+
+        $config = $this->loadConfig();
 
         if (func_num_args() < 1) {
-            return $data;
+            return $config;
         }
 
-        $current_level = $data;
+        $current_level = $config;
         for ($i = 0; $i < func_num_args(); $i++) {
             if (isset($current_level[func_get_arg($i)])) {
                 $current_level = &$current_level[func_get_arg($i)];
@@ -42,6 +42,11 @@ class ConfigContainer {
                 return false;
         }
         return $current_level;
+    }
+
+    private function loadConfig() {
+        $loader = new YamlConfigLoader(new FileLocator());
+        return $loader->load(__DIR__ . '/config/config.yml');
     }
 
 }
