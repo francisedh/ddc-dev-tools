@@ -31,7 +31,12 @@ class CleanDatabase extends BaseCommand {
 
         $output->write("\nClean up start");
         foreach ($this->getTables() as $table) {
-            $db->executeQuery("DELETE FROM `$table`;");
+            try {
+                $db->executeQuery("DELETE FROM `$table`;");
+            } catch (\Doctrine\DBAL\Exception\TableNotFoundException $exc) {
+                //Log that the database doesn't exist
+            }
+
             $progress->advance();
         }
 
